@@ -61,7 +61,7 @@ exports.CreateResume = async (req, res) => {
     const reason = reasonMatch ? reasonMatch[1].trim() : "Analysis complete.";
 
     // 4. Save to DB
-    const newResume = new resumeModel.resumeModel({
+    const newResume = new resumeModel({
       userId,
       resumeName: req.file.originalname,
       job_Desc,
@@ -94,7 +94,7 @@ exports.GetAllResumesByUser = async (req, res) => {
   try {
     const { user } = req.params;
     let resumes = await resumeModel.find({ user: user }).sort({ createdAt: -1 });
-    console.log(resumes);
+    console.log(resumes,'heddsjdklsjdsakldjsadjsdhgfghjfjhjhfjhklfjhjityoipyo');
     return res.status(200).json({message:"Your Previous History", resumes: resumes });
   }
   catch (error) {

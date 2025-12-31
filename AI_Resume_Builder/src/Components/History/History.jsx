@@ -11,11 +11,18 @@ const History = () => {
   const userInfo=useContext(AuthContext)
   useEffect(() => {
     const fetchUserData = async () => {
+      setLoader(true);
       try{
-        const result=await axios.get(`/api/resume//getResumes/${userInfo?._id}`)
+        const result=await axios.get(`/api/resume/getResumes/${userInfo?._id}`)
+      console.log("History Data:",result.data.resumes);
+      setdata(result.data.resumes);
+      alert(result.data.message,"welcome")
       }catch(error){
         console.log("Error fetching history data",error);
         alert("Error fetching history data");
+      }
+      finally{
+        setLoader(false);
       }
 
 
@@ -25,35 +32,38 @@ const History = () => {
   return (
     <div className={styles.History}>
       <div className={styles.HistoryCardBlock}>
-        <Skeleton variant="rectangular" sx={{ borderRadius: "20px" }} width={260} height={200} />   
-      <div className={styles.HistoryCard}>
-        <div className={styles.CardPercentage}>80%</div>
-        <h2>Front End Developer</h2>
-        <p>Resume Name : Resume.pdf</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere possimus ratione deserunt fuga asperiores? Saepe repudiandae, reprehenderit aspernatur iure aperiam beatae, sint natus ex nulla facilis nobis quia iste sapiente.</p>
-        <p>Dated :2025-11-08</p>
-      </div>
-      <div className={styles.Card}>
-        <div className={styles.CardPercentage}>80%</div>
-        <h2>Front End Developer</h2>
-        <p>Resume Name : Resume.pdf</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere possimus ratione deserunt fuga asperiores? Saepe repudiandae, reprehenderit aspernatur iure aperiam beatae, sint natus ex nulla facilis nobis quia iste sapiente.</p>
-        <p>Dated :2025-11-08</p>
-      </div>
-      <div className={styles.HistoryCard}>
-        <div className={styles.CardPercentage}>80%</div>
-        <h2>Front End Developer</h2>
-        <p>Resume Name : Resume.pdf</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere possimus ratione deserunt fuga asperiores? Saepe repudiandae, reprehenderit aspernatur iure aperiam beatae, sint natus ex nulla facilis nobis quia iste sapiente.</p>
-        <p>Dated :2025-11-08</p>
-      </div>
-      <div className={styles.HistoryCard}>
-        <div className={styles.CardPercentage}>80%</div>
-        <h2>Front End Developer</h2>
-        <p>Resume Name : Resume.pdf</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere possimus ratione deserunt fuga asperiores? Saepe repudiandae, reprehenderit aspernatur iure aperiam beatae, sint natus ex nulla facilis nobis quia iste sapiente.</p>
-        <p>Dated :2025-11-08</p>
-      </div>
+        {loader && 
+        <>
+        <Skeleton variant="rectangular" sx={{ borderRadius: "20px" }} width={260} height={200} />
+        <Skeleton variant="rectangular" sx={{ borderRadius: "20px" }} width={260} height={200} />
+        <Skeleton variant="rectangular" sx={{ borderRadius: "20px" }} width={260} height={200} />
+        <Skeleton variant="rectangular" sx={{ borderRadius: "20px" }} width={260} height={200} />
+        <Skeleton variant="rectangular" sx={{ borderRadius: "20px" }} width={260} height={200} />
+        
+        </>
+        
+        }   
+            { 
+            data.map((item,index)=>{
+              return(
+                <div key={item._id} className={styles.HistoryCard}>
+                <div className={styles.CardPercentage}>{item.score}%</div>
+                <h2>{item.job_Desc}</h2>
+                <p>{item.resume}</p>
+                <p>{item.feedback}</p>
+                <p>
+                  {new Date(item.createdAt).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </p>
+              </div>
+              )
+            }) 
+            
+              }
+          
       </div>
     </div>
   )

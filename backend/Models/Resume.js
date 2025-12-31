@@ -20,7 +20,8 @@ const resumeSchema = new mongoose.Schema(
     feedback:{
         type: String,
     },},{timestamps:true})
-const resumeModel = mongoose.model('Resume', resumeSchema);
-module.exports = { resumeModel };
-const Resume = mongoose.model('Resume', resumeSchema);
-module.exports = { resumeModel: Resume };
+// const resumeModel = mongoose.model('Resume', resumeSchema);
+// module.exports = { resumeModel };
+// const Resume = mongoose.model('Resume', resumeSchema);
+// module.exports = { resumeModel: Resume };
+module.exports = mongoose.model('Resume', resumeSchema);
