@@ -106,7 +106,7 @@ exports.GetAllResumesByUser = async (req, res) => {
 exports.GetResumeByAdmin = async (req, res) => {
   try {
 
-    let resumes = await resumeModel.find({}).sort({ createdAt: -1 });
+    let resumes = await resumeModel.find({}).sort({ createdAt: -1 }).populate('userId');
     console.log(resumes);
     return res.status(200).json({message:"Fethched All History", resumes: resumes });
 
