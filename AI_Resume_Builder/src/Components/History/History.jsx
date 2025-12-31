@@ -16,10 +16,10 @@ const History = () => {
         const result=await axios.get(`/api/resume/getResumes/${userInfo?._id}`)
       console.log("History Data:",result.data.resumes);
       setdata(result.data.resumes);
-      alert(result.data.message,"welcome")
+      // alert(result.data.message,"welcome")
       }catch(error){
         console.log("Error fetching history data",error);
-        alert("Error fetching history data");
+        // alert("Error fetching history data");
       }
       finally{
         setLoader(false);
@@ -69,19 +69,5 @@ const History = () => {
   )
 }
 
-export default WithAuthHoc(History) 
-// https://www.instagram.com/wtf_past_3456/
-// https://www.instagram.com/_mintydove
-// http:/ PR786@qL#9pZxmyYs#11l rat ka safer
-             
-// horifyyyaura__ Y5u@myoA9PInLEx
-// faheem QhorifyyyauraY5u@myoA9PInLExd
-// wajeeha_4793
-// https://www.instagram.com/nott_.your_type
-// https://ig.me/j/AbYQjJbYByrLKwZD/
-// https://www.instagram.com/black_b33ry1
-// https://www.instagram.com/mewaoo72
-// https://www.instagram.com/_.4deen
-
-//arsi zxzx.stfiee number +923120535599   KL6UW$mig2E!8np
-// HelloBrother90@90 its._.zain12
+export default WithAuthHoc(History)
+//asa

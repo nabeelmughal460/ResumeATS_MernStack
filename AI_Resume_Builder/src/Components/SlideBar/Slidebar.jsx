@@ -24,9 +24,10 @@ const Slidebar = () => {
 
   // Login page par redirect
   // navigate('/', { replace: true });
-    navigate('/');
+    navigate('./');
+    console.log("Logged Out Successfully");
     // alert("Logged Out Successfully");
-    login=false
+    // login=false
   }
   return (
     <div className={styles.Slidebar}>

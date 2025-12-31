@@ -15,7 +15,7 @@ const Admin = () => {
           const result=await axios.get(`/api/resume/getResumes`)
           console.log("Admin Data:",result.data.resumes);
           setdata(result.data.resumes);
-          alert(result.data.message,"welcome")
+          // alert(result.data.message,"welcome")
 
         }catch(error){
           console.log("Error fetching Admin data",error);
