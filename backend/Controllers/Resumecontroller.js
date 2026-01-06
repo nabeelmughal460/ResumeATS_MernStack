@@ -4,9 +4,13 @@ const mongoose = require("mongoose");
 const pdfParse = require("pdf-parse");
 const { CohereClient } = require("cohere-ai");
 const fs = require('fs');
+// import dotenv from 'dotenv';
+const dotenv = require('dotenv');
+  dotenv.config();
 
 const cohere = new CohereClient({
-  token: "CeJ3TCxMRJ1sbToZrJj3MhAQXgOfMTsWnVKDGOMd" 
+  // token: "CeJ3TCxMRJ1sbToZrJj3MhAQXgOfMTsWnVKDGOMd" 
+  token: process.env.COHERE_API_KEY
 });
 
 exports.CreateResume = async (req, res) => {

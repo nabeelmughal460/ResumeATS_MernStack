@@ -46,7 +46,7 @@ const History = () => {
             { 
             data.map((item,index)=>{
               return(
-                <div key={item._id} className={styles.HistoryCard}>
+                <div key={item?._id} className={styles.HistoryCard}>
                 <div className={styles.CardPercentage}>{item.score}%</div>
                 <h2>{item.job_Desc}</h2>
                 <p>{item.resume}</p>
